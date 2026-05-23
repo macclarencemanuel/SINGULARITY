@@ -1,3 +1,6 @@
+const rangerBossImage = new Image();
+rangerBossImage.src = "assets/images/player-walk-1.png";
+
 export class Enemy {
   constructor(x, y, data, type = "charger") {
     this.x = x;
@@ -25,10 +28,8 @@ export class Enemy {
 
     this.remove = false;
 
-    // rotation / facing
     this.aimAngle = 0;
 
-    // charger sprite animation only
     this.walkFrames = [];
     this.currentFrame = 0;
     this.frameTimer = 0;
@@ -85,9 +86,7 @@ export class Enemy {
     dx /= dist;
     dy /= dist;
 
-    // store facing direction
     this.aimAngle = Math.atan2(dy, dx);
-
     this.isMoving = false;
 
     if (this.type === "charger") {
@@ -156,7 +155,6 @@ export class Enemy {
 
       this.shootCooldown--;
 
-      // one big bullet instead of spread
       if (this.shootCooldown <= 0 && dist < 650) {
         spawnedShots.push({
           x: enemyCenterX,
@@ -198,64 +196,14 @@ export class Enemy {
     const drawX = this.x - camera.x;
     const drawY = this.y - camera.y;
 
-    // CHARGER uses sprite animation
     if (this.type === "charger") {
-      const centerX = drawX + this.width / 2;
-      const centerY = drawY + this.height / 2;
-      const sprite = this.walkFrames[this.currentFrame];
-
-      ctx.save();
-      ctx.translate(centerX, centerY);
-      ctx.rotate(this.aimAngle - Math.PI / 2);
-
-      if (
-        this.hitFlashTimer > 0 &&
-        Math.floor(this.hitFlashTimer / 2) % 2 === 0
-      ) {
-        ctx.globalAlpha = 0.6;
-      }
-
-      if (sprite && sprite.complete && sprite.naturalWidth > 0) {
-        ctx.drawImage(
-          sprite,
-          -this.width / 2,
-          -this.height / 2,
-          this.width,
-          this.height
-        );
-      } else {
-        ctx.fillStyle = this.hitFlashTimer > 0 ? "white" : "#ff4d4d";
-        ctx.beginPath();
-        ctx.arc(0, 0, this.width / 2, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      ctx.restore();
+      this.drawCharger(ctx, drawX, drawY);
       return;
     }
 
-    // Ranger / Boss fallback drawing
-    if (this.hitFlashTimer > 0) {
-      ctx.fillStyle = "white";
-    } else if (this.type === "ranger") {
-      ctx.fillStyle = "#b86bff";
-    } else if (this.type === "boss") {
-      ctx.fillStyle = "#ff2d75";
+    if (this.type === "ranger" || this.type === "boss") {
+      this.drawRangerBossSprite(ctx, drawX, drawY);
     }
-
-    ctx.beginPath();
-    ctx.arc(
-      drawX + this.width / 2,
-      drawY + this.height / 2,
-      this.width / 2,
-      0,
-      Math.PI * 2
-    );
-    ctx.fill();
-
-    ctx.strokeStyle = this.hitFlashTimer > 0 ? "#ffdddd" : "white";
-    ctx.lineWidth = this.type === "boss" ? 4 : 1.5;
-    ctx.stroke();
 
     if (this.type === "boss") {
       this.drawBossHealthBar(ctx, drawX, drawY);
@@ -266,6 +214,81 @@ export class Enemy {
       ctx.fillText("???", drawX + this.width / 2, drawY - 16);
       ctx.textAlign = "left";
     }
+  }
+
+  drawCharger(ctx, drawX, drawY) {
+    const centerX = drawX + this.width / 2;
+    const centerY = drawY + this.height / 2;
+    const sprite = this.walkFrames[this.currentFrame];
+
+    ctx.save();
+    ctx.translate(centerX, centerY);
+    ctx.rotate(this.aimAngle - Math.PI / 2);
+
+    if (
+      this.hitFlashTimer > 0 &&
+      Math.floor(this.hitFlashTimer / 2) % 2 === 0
+    ) {
+      ctx.globalAlpha = 0.6;
+    }
+
+    if (sprite && sprite.complete && sprite.naturalWidth > 0) {
+      ctx.drawImage(
+        sprite,
+        -this.width / 2,
+        -this.height / 2,
+        this.width,
+        this.height
+      );
+    } else {
+      ctx.fillStyle = this.hitFlashTimer > 0 ? "white" : "#ff4d4d";
+      ctx.beginPath();
+      ctx.arc(0, 0, this.width / 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.globalAlpha = 1;
+    ctx.restore();
+  }
+
+  drawRangerBossSprite(ctx, drawX, drawY) {
+    const centerX = drawX + this.width / 2;
+    const centerY = drawY + this.height / 2;
+
+    ctx.save();
+    ctx.translate(centerX, centerY);
+    ctx.rotate(this.aimAngle - Math.PI / 2);
+
+    if (
+      this.hitFlashTimer > 0 &&
+      Math.floor(this.hitFlashTimer / 2) % 2 === 0
+    ) {
+      ctx.globalAlpha = 0.6;
+    }
+
+    if (rangerBossImage.complete && rangerBossImage.naturalWidth > 0) {
+      ctx.drawImage(
+        rangerBossImage,
+        -this.width / 2,
+        -this.height / 2,
+        this.width,
+        this.height
+      );
+    } else {
+      ctx.fillStyle = this.type === "boss" ? "#ff2d75" : "#b86bff";
+      ctx.beginPath();
+      ctx.arc(0, 0, this.width / 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.globalAlpha = 1;
+    ctx.restore();
+
+    ctx.strokeStyle = this.type === "boss" ? "#ff2d75" : "#b86bff";
+    ctx.lineWidth = this.type === "boss" ? 3 : 2;
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, this.width / 2 + 4, 0, Math.PI * 2);
+    ctx.stroke();
   }
 
   drawBossHealthBar(ctx, drawX, drawY) {
