@@ -4,7 +4,7 @@ Project Title:
 SINGULARITY
 
 Playable Game Link:
-PASTE YOUR GITHUB PAGES LINK HERE
+https://macclarencemanuel.github.io/SINGULARITY/
 
 Important:
 Please use the playable GitHub Pages link above to run the game.
@@ -21,6 +21,7 @@ Recommended Way to Run:
 5. Click Play.
 6. Read the How to Play screen.
 7. Click Start Game.
+8. After finishing the intro, wait for the assets to load. Then enjoy.
 
 Included Files:
 - Source code of the entire project
