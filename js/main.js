@@ -134,7 +134,7 @@ function setupIntroSequence() {
   }
 
   introVideo.loop = false;
-  introVideo.muted = false;
+  introVideo.muted = true;
   introVideo.currentTime = 0;
 
   if (fadeOverlay) {
@@ -147,6 +147,7 @@ function setupIntroSequence() {
 
   introVideo.play().catch((error) => {
     console.warn("Intro autoplay was blocked:", error);
+    finishIntro();
   });
 
   introVideo.onended = finishIntro;
