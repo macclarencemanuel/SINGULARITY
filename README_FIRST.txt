@@ -17,9 +17,10 @@ Recommended Way to Run:
 1. Open the GitHub Pages link.
 2. Wait for the intro video to finish.
 3. Click the title screen.
-4. Click Play.
-5. Read the How to Play screen.
-6. Click Start Game.
+4. Go to settings and adjust the volume slider to your preference
+5. Click Play.
+6. Read the How to Play screen.
+7. Click Start Game.
 
 Included Files:
 - Source code of the entire project
