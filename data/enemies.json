@@ -1,0 +1,14 @@
+{
+  "charger": {
+    "hp": 2,
+    "speed": 1.7,
+    "damage": 1,
+    "color": "#ff4d4d"
+  },
+  "ranger": {
+    "hp": 2,
+    "speed": 1.25,
+    "damage": 1,
+    "color": "#b86bff"
+  }
+}

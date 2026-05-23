@@ -1,0 +1,155 @@
+SINGULARITY - USER MANUAL
+
+1. Game Overview
+
+SINGULARITY is a sci-fi horror shooter game where the player wakes up inside a mysterious space facility after their consciousness has been uploaded. The player must survive hostile entities, clear rooms, collect credits, upgrade equipment, defeat bosses, and escape after Room 10.
+
+The game includes:
+- Intro video
+- Title screen
+- Main menu
+- How to Play screen
+- Game intro cutscene
+- Room-based combat
+- Shop/terminal upgrade system
+- Boss fights
+- Ending sequence
+
+
+2. How to Start the Game
+
+1. Open the playable GitHub Pages link.
+2. Wait for the intro sequence to finish.
+3. Click the title screen or press any key.
+4. Click Play.
+5. Read the How to Play screen.
+6. Click Start Game.
+7. Watch or skip the game intro cutscene.
+8. Begin playing.
+
+
+3. Controls
+
+Move:
+W A S D
+
+Run:
+Hold Shift
+
+Aim:
+Mouse
+
+Shoot:
+Left Click
+
+Pause:
+Esc
+
+Open Shop/Terminal:
+Press T when prompted
+
+Menu Navigation:
+Use mouse clicks on the buttons.
+
+
+4. Main Objective
+
+The goal of the game is to progress through 10 rooms and escape the facility.
+
+The player must:
+1. Defeat all enemies in each room.
+2. Collect loot and credits.
+3. Open the shop/terminal when prompted.
+4. Buy upgrades if enough credits are available.
+5. Move to the next room.
+6. Defeat the boss in Room 5.
+7. Defeat the final boss in Room 10.
+8. Escape and complete the ending sequence.
+
+
+5. Room System
+
+The game has a maximum of 10 rooms.
+
+Room 1 starts easier.
+Enemy difficulty gradually increases as the player progresses.
+Room 5 contains the first boss.
+Room 10 contains the final boss.
+After Room 10, the player escapes and reaches the ending.
+
+
+6. Enemy Types
+
+Charger Enemy:
+Moves toward the player and attacks at close range.
+
+Long Distance Shooter Enemy:
+Keeps distance from the player and shoots projectiles.
+
+Boss Enemy:
+Appears in Room 5 and Room 10.
+Shoots a large projectile.
+Has higher health and damage than normal enemies.
+
+
+7. Loot System
+
+Enemies may drop items after being defeated.
+
+Credits:
+Used to buy upgrades in the shop.
+
+Heal:
+Restores player health.
+
+
+8. Shop / Terminal System
+
+After clearing a room and collecting loot, the player can open the terminal shop by pressing T when prompted.
+
+Available upgrades:
+
+Space Boots Upgrade:
+Increases player speed.
+
+Space Gloves Upgrade:
+Increases attack speed.
+
+Space Suit Upgrade:
+Adds shield.
+
+Space Helmet Upgrade:
+Increases maximum HP.
+
+Repair:
+Restores 1 HP.
+
+
+9. Health and Game Over
+
+The player has HP and shield.
+
+If the player takes damage:
+- Shield is removed first if available.
+- HP is reduced if no shield is available.
+
+If HP reaches 0:
+- The game fades to the Game Over screen.
+- The screen displays room reached, credits collected, enemies defeated, and time survived.
+- The player can restart or quit to the menu.
+
+
+10. Ending
+
+After defeating the final boss in Room 10, the exit changes to Escape.
+When the player escapes:
+1. A fade effect plays.
+2. A humorous ending screen appears.
+3. A celebration sound plays.
+4. A serious completion screen appears.
+5. The player returns to the main menu.
+
+
+11. Notes
+
+For the most stable experience, the game should be played through the GitHub Pages link provided in README_FIRST.txt.

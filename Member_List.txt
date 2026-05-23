@@ -1,0 +1,43 @@
+SINGULARITY - MEMBER LIST AND CONTRIBUTION
+
+Group / Section:
+25088
+
+Project Title:
+SINGULARITY
+
+
+1. Mac Clarence M. Manuel - 50%
+
+Contribution:
+- Main programmer of the project
+- Developed the overall game structure and code implementation
+- Created the player movement, running, aiming, and shooting systems
+- Implemented enemy behavior, enemy attacks, boss rooms, and room progression
+- Programmed the shop/terminal system and player upgrades
+- Added health, shield, credits, loot, game over, pause, and ending systems
+- Integrated audio, music, videos, cutscenes, fade transitions, and UI screens
+- Fixed bugs, optimized gameplay flow, and handled final project assembly
+- Uploaded and organized the project files for submission
+
+
+2. Rommel Vittorio S. Raymundo - 50%
+
+Contribution:
+- Main artist and concept designer of the project
+- Created and planned the visual concept of the game
+- Designed the game’s sci-fi horror theme and atmosphere
+- Provided character, enemy, item, and visual asset concepts
+- Assisted in designing the look of the menus, backgrounds, and overall game style
+- Helped with sprite direction, visual feedback, and art improvements
+- Contributed to the creative direction, story tone, and presentation of the game
+
+
+Total Contribution:
+100%
+
+Prepared by:
+Mac Clarence Manuel and Rommel Vittorio S. Raymundo
+
+Date Submitted:
+May 23rd 2026

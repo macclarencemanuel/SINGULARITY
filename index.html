@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Singularity</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div id="introScreen" class="screen">
+    <video id="introVideo" autoplay playsinline preload="auto">
+      <source src="assets/videos/intro.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div id="loadingScreen">
+    <h1 class="loadingTitle">SINGULARITY</h1>
+    <p class="loadingText">Loading...</p>
+  </div>
+
+  <div id="titleScreen" class="screen hidden videoScreen"> 
+    <video id="titleVideo" autoplay muted loop playsinline>
+      <source src="assets/videos/menu-bg.mp4" type="video/mp4">
+    </video>
+
+    <div class="titleContent">
+      <img src="assets/images/title-page.png" alt="Singularity" id="titlePageOnly">
+
+      <p id="clickToStartText">PRESS ANY BUTTON TO CONTINUE</p>
+      <p id="copyrightText">MACMEL © 2026 COPYRIGHT RESERVED</p>
+    </div>
+  </div>
+
+  <div id="mainMenu" class="screen hidden videoScreen">
+    <video class="bgVideo" autoplay muted loop playsinline>
+      <source src="assets/videos/menu-bg.mp4" type="video/mp4">
+    </video>
+
+    <div class="menuContent glassMenu">
+      <img src="assets/images/main.png" alt="Singularity" id="mainMenuLogo">
+      <button id="playBtn" class="sciBtn">Play</button>
+      <button id="settingsBtn" class="sciBtn">Settings</button>
+      <button id="exitBtn" class="sciBtn">Exit</button>
+    </div>
+  </div>
+
+  <div id="settingsScreen" class="screen hidden videoScreen">
+    <video class="bgVideo" autoplay muted loop playsinline>
+      <source src="assets/videos/menu-bg.mp4" type="video/mp4">
+    </video>
+
+    <div class="centerPanel">
+      <h2>Settings</h2>
+
+      <label class="volumeLabel">
+        <span>Volume:</span>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+      </label>
+
+      <button id="backFromSettings" class="sciBtn">Back</button>
+    </div>
+  </div>
+
+  <div id="instructionsScreen" class="screen hidden videoScreen">
+    <video class="bgVideo" autoplay muted loop playsinline>
+      <source src="assets/videos/menu-bg.mp4" type="video/mp4">
+    </video>
+
+    <div class="centerPanel instructionsPanel">
+      <h2>How to Play</h2>
+
+      <div class="instructionBox">
+        <p><strong>Move:</strong> W A S D</p>
+        <p><strong>Run:</strong> Hold Shift</p>
+        <p><strong>Aim:</strong> Mouse</p>
+        <p><strong>Shoot:</strong> Left Click</p>
+        <p><strong>Pause:</strong> Esc</p>
+        <p>Kill all enemies in the room.</p>
+        <p>After clearing the room, the terminal and doors will appear.</p>
+        <p>Proceed to the door to go to the next room.</p>
+      </div>
+
+      <button id="startGameBtn" class="sciBtn">Start Game</button>
+      <button id="backFromInstructions" class="sciBtn">Back</button>
+    </div>
+  </div>
+
+  <div id="gameCutsceneScreen" class="screen hidden">
+    <video id="gameCutsceneVideo" playsinline preload="auto">
+      <source src="assets/videos/game-intro.mp4" type="video/mp4">
+    </video>
+
+    <div id="skipGameIntroBox">
+      <button id="skipGameIntroBtn">SKIP</button>
+      <p>Click to skip cutscene</p>
+    </div>
+  </div>
+
+  <div id="gameScreen" class="hidden">
+    <canvas id="gameCanvas" width="1200" height="760"></canvas>
+
+    <div id="hud">
+      <span id="hpText">HP: 5/5</span>
+      <span id="shieldText">Shield: 0</span>
+      <span id="coinsText">Credits: 0</span>
+      <span id="roomText">Room: 1</span>
+      <span id="waveText">Wave: 1</span>
+    </div>
+    
+    <div id="messageBox" class="hidden">
+      Wave Cleared!
+    </div>
+
+    <div id="dialogueBox" class="hidden">
+      <p id="dialogueText">What the hell is that...</p>
+    </div>
+
+    <div id="shopPanel" class="hidden">
+      <h2>TERMINAL</h2>
+      <p>Spend your credits before leaving.</p>
+
+      <button id="buySpeedBtn"></button>
+      <button id="buyPowerBtn"></button>
+      <button id="buyShieldBtn"></button>
+      <button id="buyHpBtn"></button>
+      <button id="buyHealBtn"></button>
+
+      <button id="closeShopBtn">Exit Terminal</button>
+    </div>
+
+    <div id="pausePanel" class="hidden">
+      <h2>Paused</h2>
+      <button id="resumeBtn">Resume</button>
+      <button id="restartBtn">Restart</button>
+      <button id="mainMenuBtn">Main Menu</button>
+    </div>
+
+    <div id="gameOverPanel" class="hidden">
+      <h2>GAME OVER</h2>
+
+      <div id="gameOverStats" class="gameOverStats"></div>
+
+      <button id="gameOverRestartBtn">Restart</button>
+      <button id="gameOverMenuBtn">Quit</button>
+    </div>
+  </div>
+
+  <div id="fadeOverlay" class="active"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

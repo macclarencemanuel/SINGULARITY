@@ -1,0 +1,26 @@
+{
+  "heart": {
+    "type": "heal",
+    "value": 1,
+    "dropChance": 0.18,
+    "color": "pink"
+  },
+  "coin": {
+    "type": "coin",
+    "value": 1,
+    "dropChance": 0.45,
+    "color": "yellow"
+  },
+  "power": {
+    "type": "power",
+    "value": 1,
+    "dropChance": 0.05,
+    "color": "cyan"
+  },
+  "shield": {
+    "type": "shield",
+    "value": 1,
+    "dropChance": 0.06,
+    "color": "deepskyblue"
+  }
+}

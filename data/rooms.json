@@ -1,0 +1,14 @@
+{
+  "easy": {
+    "waves": 2,
+    "enemyCount": 3
+  },
+  "normal": {
+    "waves": 3,
+    "enemyCount": 5
+  },
+  "hard": {
+    "waves": 4,
+    "enemyCount": 7
+  }
+}

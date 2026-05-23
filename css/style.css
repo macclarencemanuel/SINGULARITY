@@ -1,0 +1,715 @@
+@font-face {
+  font-family: PixelFont;
+  src: url("../assets/fonts/NasalizationRg.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #000;
+  color: white;
+  font-family: PixelFont, Arial, sans-serif;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* =========================
+   GENERAL SCREENS
+========================= */
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  background: #151515;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen h1 {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.screen h2 {
+  font-size: 40px;
+}
+
+/* =========================
+   INTRO VIDEO
+========================= */
+
+#introScreen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+#introVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: black;
+}
+
+/* =========================
+   OLD LOADING SCREEN
+========================= */
+
+#loadingScreen {
+  position: fixed;
+  inset: 0;
+  background: #090909;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: pulseBg 1.5s infinite alternate;
+}
+
+.loadingTitle {
+  font-size: 64px;
+  animation: bounce 1s infinite alternate;
+}
+
+.loadingText {
+  font-size: 24px;
+}
+
+@keyframes pulseBg {
+  from {
+    background: #050505;
+  }
+
+  to {
+    background: #202020;
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-12px);
+  }
+}
+
+/* =========================
+   VIDEO BACKGROUND SCREENS
+========================= */
+
+.videoScreen {
+  position: relative;
+  overflow: hidden;
+}
+
+.bgVideo,
+#menuVideo,
+#titleVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.videoScreen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.35)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45));
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* =========================
+   TITLE CLICK SCREEN
+========================= */
+
+#titleScreen {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.titleContent {
+  position: relative;
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+}
+
+#titlePageOnly {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100vw;
+  max-width: 1800px;
+  height: auto;
+
+  display: block;
+  image-rendering: auto;
+  pointer-events: none;
+}
+
+#clickToStartText {
+  position: absolute;
+  left: 50%;
+  top: 76%;
+  transform: translateX(-50%);
+
+  margin: 0;
+  font-size: 18px;
+  color: white;
+  letter-spacing: 1px;
+  text-align: center;
+  white-space: nowrap;
+  text-shadow: 0 0 10px black;
+  animation: blinkText 1.5s infinite;
+}
+
+#copyrightText {
+  position: absolute;
+  left: 50%;
+  top: 84%;
+  transform: translateX(-50%);
+
+  margin: 0;
+  font-size: 13px;
+  color: white;
+  letter-spacing: 1px;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0.9;
+  text-shadow: 0 0 8px black;
+}
+
+@keyframes blinkText {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.35;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* =========================
+   MAIN MENU
+========================= */
+
+.menuContent,
+.centerPanel {
+  position: relative;
+  z-index: 3;
+}
+
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh;
+  width: 100%;
+  padding: 40px 20px;
+}
+
+#mainMenu h1 {
+  display: none;
+}
+
+#mainMenu .menuContent {
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  /*
+    Moves the whole menu group upward.
+    Increase negative number to move higher.
+  */
+  transform: translateY(-70px);
+}
+
+/* Main menu PNG logo */
+#mainMenuLogo {
+  display: block;
+
+  /*
+    Logo size.
+    Lower this if logo is too huge.
+  */
+  width: min(780px, 90vw);
+  max-width: 780px;
+
+  /*
+    Negative bottom margin pulls buttons closer to the logo.
+  */
+  margin: 0 auto -35px auto;
+
+  image-rendering: auto;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.14));
+}
+
+/* Main menu button spacing */
+#mainMenu .sciBtn,
+#mainMenu button {
+  width: min(330px, 70vw);
+  min-height: 66px;
+  margin: 7px 0;
+}
+
+/* First button closer to the logo */
+#mainMenuLogo + .sciBtn,
+#mainMenuLogo + button {
+  margin-top: 0;
+}
+
+/* =========================
+   SETTINGS / INSTRUCTIONS
+========================= */
+
+.centerPanel {
+  min-height: 100vh;
+  width: 100%;
+  padding: 40px 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.centerPanel h2 {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  margin-bottom: 34px;
+  color: #ffffff;
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.16);
+}
+
+.instructionBox {
+  width: min(780px, 86vw);
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5;
+
+  background: rgba(0, 0, 0, 0.42);
+  padding: 34px 28px;
+  border: 3px solid rgba(255, 255, 255, 0.86);
+  margin-bottom: 28px;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.05);
+}
+
+.instructionBox p {
+  font-size: 1.25rem;
+  line-height: 1.65;
+  color: #f3f3f3;
+  margin: 8px 0;
+}
+
+.volumeLabel {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 28px;
+}
+
+#volumeSlider {
+  width: 240px;
+  cursor: pointer;
+}
+
+/* =========================
+   SCI-FI BUTTONS
+========================= */
+
+button,
+.sciBtn {
+  position: relative;
+
+  width: min(330px, 72vw);
+  min-height: 74px;
+  padding: 14px 20px;
+  margin: 10px 0;
+
+  background: rgba(0, 0, 0, 0.14);
+  color: #ffffff;
+
+  border: 2px solid rgba(255, 255, 255, 0.86);
+
+  font-family: PixelFont, Arial, sans-serif;
+  font-size: 1.85rem;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  overflow: hidden;
+  backdrop-filter: blur(2px);
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.14s ease;
+}
+
+/* animated scanline */
+button::before,
+.sciBtn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: -130%;
+
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent 42%,
+    rgba(124, 236, 255, 0.18) 50%,
+    transparent 58%,
+    transparent 100%
+  );
+
+  transition: left 0.45s ease;
+  pointer-events: none;
+}
+
+/* corner brackets */
+button::after,
+.sciBtn::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+
+  box-shadow:
+    -14px -14px 0 -11px transparent,
+    14px 14px 0 -11px transparent;
+
+  pointer-events: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    inset 0.2s ease;
+}
+
+/* extra corner elements */
+button:hover,
+button:focus-visible,
+.sciBtn:hover,
+.sciBtn:focus-visible {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #ffffff;
+
+  box-shadow:
+    0 0 14px rgba(255, 255, 255, 0.35),
+    inset 0 0 18px rgba(255, 255, 255, 0.12);
+
+  transform: translateY(-1px);
+}
+
+button:hover::before,
+button:focus-visible::before,
+.sciBtn:hover::before,
+.sciBtn:focus-visible::before {
+  left: 130%;
+}
+
+button:hover::after,
+button:focus-visible::after,
+.sciBtn:hover::after,
+.sciBtn:focus-visible::after {
+  inset: 5px;
+  border-top-color: rgba(255, 255, 255, 0.95);
+  border-bottom-color: rgba(255, 255, 255, 0.95);
+
+  box-shadow:
+    -16px -16px 0 -11px #ffffff,
+    16px 16px 0 -11px #ffffff;
+}
+
+button:active,
+.sciBtn:active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.22);
+  border-color: #d9ffff;
+
+  box-shadow:
+    0 0 18px rgba(124, 236, 255, 0.38),
+    inset 0 0 20px rgba(124, 236, 255, 0.18);
+
+  transform: scale(0.985);
+}
+
+
+/* =========================
+   GAME SCREEN
+========================= */
+
+#gameScreen {
+  width: 100vw;
+  height: 100vh;
+  background: black;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#gameCanvas {
+  background: black;
+  border: 4px solid white;
+  image-rendering: pixelated;
+  cursor: crosshair;
+
+  max-width: 95vw;
+  max-height: 85vh;
+}
+
+#hud {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 14px;
+
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.75);
+
+  padding: 12px 16px;
+  border: 2px solid white;
+
+  z-index: 20;
+}
+
+/* =========================
+   MESSAGE BOX
+========================= */
+
+#messageBox {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 34px;
+  background: rgba(0, 0, 0, 0.85);
+  color: gold;
+
+  padding: 20px 40px;
+  border: 3px solid gold;
+  text-align: center;
+
+  z-index: 30;
+}
+
+/* =========================
+   SHOP / PAUSE / GAME OVER
+========================= */
+
+#shopPanel,
+#pausePanel,
+#gameOverPanel {
+  position: absolute;
+  width: 420px;
+
+  background: rgba(0, 0, 0, 0.94);
+  border: 4px solid white;
+
+  padding: 25px;
+  text-align: center;
+
+  z-index: 40;
+}
+
+#shopPanel {
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+#shopPanel h2,
+#pausePanel h2,
+#gameOverPanel h2 {
+  margin-top: 0;
+  color: gold;
+}
+
+#shopPanel p,
+#gameOverPanel p {
+  font-size: 18px;
+}
+
+#shopPanel button {
+  width: 100%;
+  font-size: 1.15rem;
+  min-height: 58px;
+}
+
+#gameOverPanel {
+  width: 520px;
+  background: rgba(0, 0, 0, 0.96);
+  border: 3px solid #7a1515;
+  box-shadow: 0 0 24px rgba(255, 70, 70, 0.22);
+}
+
+#gameOverPanel h2 {
+  color: #ff4e3b;
+  font-size: 54px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 12px rgba(255, 60, 60, 0.5);
+}
+
+.gameOverStats {
+  margin: 18px 0 24px;
+  padding: 14px 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+
+  text-align: left;
+}
+
+.gameOverStats p {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.gameOverStats strong {
+  color: #ffffff;
+}
+
+/* =========================
+   DIALOGUE BOX
+========================= */
+
+#dialogueBox {
+  position: absolute;
+  left: 50%;
+  bottom: 35px;
+  transform: translateX(-50%);
+
+  width: 75%;
+  max-width: 900px;
+
+  background: rgba(0, 0, 0, 0.92);
+  border: 3px solid white;
+  color: white;
+
+  padding: 22px 28px;
+  z-index: 35;
+
+  font-family: PixelFont, Arial, sans-serif;
+  font-size: 22px;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+#dialogueBox p {
+  margin: 0;
+}
+
+/* =========================
+   FADE OVERLAY
+========================= */
+
+#fadeOverlay {
+  position: fixed;
+  inset: 0;
+
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+
+  z-index: 999999;
+  transition: opacity 0.8s ease;
+}
+
+#fadeOverlay.active {
+  opacity: 1;
+}
+
+/* =========================
+   GAME INTRO CUTSCENE
+========================= */
+
+#gameCutsceneScreen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+#gameCutsceneVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: black;
+}
+
+#skipGameIntroBox {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  z-index: 1002;
+  text-align: center;
+  color: white;
+  font-family: PixelFont, Arial, sans-serif;
+}
+
+#skipGameIntroBtn {
+  width: 160px;
+  min-height: 48px;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 2px solid white;
+  color: white;
+}
+
+#skipGameIntroBtn:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 14px rgba(255, 255, 255, 0.35),
+    inset 0 0 18px rgba(255, 255, 255, 0.12);
+}
+
+#skipGameIntroBox p {
+  margin: 6px 0 0;
+  font-size: 12px;
+  opacity: 0.75;
+}
